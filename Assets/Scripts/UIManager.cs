@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour {
         DefaultUI.SetActive(false);
         LockScreenUI.SetActive(true);
 
+        lockScreenCamera.GetComponent<LockScreenCamera>().UpdateCamera();
+
         RenderTexture tempRT = new RenderTexture(Screen.width, Screen.height, 24);
         lockScreenCamera.targetTexture = tempRT;
         lockScreenCamera.Render();
