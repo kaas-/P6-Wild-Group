@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         LockScreenUI.SetActive(false);
 	}
 
