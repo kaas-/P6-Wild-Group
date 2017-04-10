@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour {
     public Camera lockScreenCamera;
 
     private int InstructionCounter = 0;
+    public bool ScreenLocked;
+    public bool TrackingLost = true;
 
 	// Use this for initialization
 	void Awake () {
@@ -29,7 +31,7 @@ public class UIManager : MonoBehaviour {
 
 	}
 
-    public void OnInstructionButton()
+    public void OnInstructionScreen()
     {
         DefaultUI.SetActive(false);
         
@@ -49,7 +51,7 @@ public class UIManager : MonoBehaviour {
     //based on http://answers.unity3d.com/questions/9969/convert-a-rendertexture-to-a-texture2d.html
     public void LockScreenButton()
     {
-        DefaultUI.SetActive(false);
+        InstructionUI.SetActive(false);
         LockScreenUI.SetActive(true);
 
         lockScreenCamera.GetComponent<LockScreenCamera>().UpdateCamera();
@@ -71,6 +73,8 @@ public class UIManager : MonoBehaviour {
 
         lockScreenTexture.texture = snapshot;
         lockScreenTexture.color = Color.white;
+
+        ScreenLocked = true;
 
     }
 
@@ -106,9 +110,24 @@ public class UIManager : MonoBehaviour {
 
     public void OnReturnButton()
     {
-        LockScreenUI.SetActive(false);
         InstructionUI.SetActive(false);
         DefaultUI.SetActive(true);
     }
 
+    public void OnScreenUnlockButton()
+    {
+        ScreenLocked = false;
+        LockScreenUI.SetActive(false);
+        InstructionUI.SetActive(true);
+    }
+
+    void Update()
+    {
+
+        if(!TrackingLost && !ScreenLocked && !InstructionUI.activeInHierarchy)
+        {
+            OnInstructionScreen();
+        }
+
+    }
 }
