@@ -18,6 +18,7 @@ public class LockScreenCamera : MonoBehaviour {
         camera.fieldOfView = Camera.main.fieldOfView;
         camera.rect = Camera.main.rect;
         camera.aspect = Camera.main.aspect;
+        camera.farClipPlane = Camera.main.farClipPlane;
 
 	}
 }
