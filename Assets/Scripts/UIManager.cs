@@ -20,9 +20,12 @@ public class UIManager : MonoBehaviour {
 	void Awake () {
 
         Instructions = new GameObject[] { Instruction1, Instruction2, Instruction3 };
+        
+        
 
         LockScreenUI.SetActive(false);
         InstructionUI.SetActive(false);
+
 
 	}
 
@@ -107,4 +110,5 @@ public class UIManager : MonoBehaviour {
         InstructionUI.SetActive(false);
         DefaultUI.SetActive(true);
     }
+
 }

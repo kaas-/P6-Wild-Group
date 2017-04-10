@@ -11,14 +11,15 @@ public class LockScreenCamera : MonoBehaviour {
     }
 
     public void UpdateCamera () {
-        gameObject.transform.position = Camera.main.transform.position;
-        gameObject.transform.localRotation = Camera.main.transform.localRotation;
+        gameObject.transform.position = Camera.main.transform.parent.position;
+        gameObject.transform.localRotation = Camera.main.transform.parent.localRotation;
 
         camera.depth = Camera.main.depth;
         camera.fieldOfView = Camera.main.fieldOfView;
         camera.rect = Camera.main.rect;
         camera.aspect = Camera.main.aspect;
         camera.farClipPlane = Camera.main.farClipPlane;
+        camera.nearClipPlane = Camera.main.nearClipPlane;
 
 	}
 }
