@@ -6,6 +6,7 @@ TagManager:
   tags:
   - renderCamera
   - planeTexture
+  - instruction
   layers:
   - Default
   - TransparentFX

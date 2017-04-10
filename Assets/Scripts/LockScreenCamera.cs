@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LockScreenCamera : MonoBehaviour {
 
-    Camera camera;
+    new Camera camera;
     private void Start()
     {
         camera = GetComponent<Camera>();
@@ -17,6 +17,7 @@ public class LockScreenCamera : MonoBehaviour {
         camera.depth = Camera.main.depth;
         camera.fieldOfView = Camera.main.fieldOfView;
         camera.rect = Camera.main.rect;
+        camera.aspect = Camera.main.aspect;
 
 	}
 }

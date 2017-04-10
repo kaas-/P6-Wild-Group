@@ -7,18 +7,39 @@ public class UIManager : MonoBehaviour {
 
     public GameObject DefaultUI;
     public GameObject LockScreenUI;
+    public GameObject InstructionUI;
+
+    public GameObject Instruction1, Instruction2, Instruction3;
+    private GameObject[] Instructions;
 
     public Camera lockScreenCamera;
 
-
+    private int InstructionCounter = 0;
 
 	// Use this for initialization
 	void Awake () {
+
+        Instructions = new GameObject[] { Instruction1, Instruction2, Instruction3 };
+
         LockScreenUI.SetActive(false);
+        InstructionUI.SetActive(false);
+
 	}
 
-    public void buttonTest()
+    public void OnInstructionButton()
     {
+        DefaultUI.SetActive(false);
+        
+        InstructionUI.SetActive(true);
+
+        InstructionCounter = 0;
+
+        foreach (GameObject instruction in Instructions)
+        {
+            instruction.SetActive(false);
+        }
+
+        Instructions[InstructionCounter].SetActive(true);
 
     }
 
@@ -50,9 +71,40 @@ public class UIManager : MonoBehaviour {
 
     }
 
-    public void UnlockScreenButton()
+
+    public void OnForwardButton()
+    {
+
+        if (InstructionCounter >= Instructions.Length - 1)
+        {
+            InstructionCounter = Instructions.Length - 1;
+        }
+        else
+        {
+            Instructions[InstructionCounter].SetActive(false);
+            InstructionCounter++;
+            Instructions[InstructionCounter].SetActive(true);
+        }
+    }
+
+    public void OnBackButton()
+    {
+        if (InstructionCounter <= 0)
+        {
+            InstructionCounter = 0;
+        }
+        else
+        {
+            Instructions[InstructionCounter].SetActive(false);
+            InstructionCounter--;
+            Instructions[InstructionCounter].SetActive(true);
+        }
+    }
+
+    public void OnReturnButton()
     {
         LockScreenUI.SetActive(false);
+        InstructionUI.SetActive(false);
         DefaultUI.SetActive(true);
     }
 }
