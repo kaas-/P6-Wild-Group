@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="red_aau" size="0.180000 0.180000" />
+    <ImageTarget name="blue_aau" size="0.180000 0.180000" />
+    <ImageTarget name="aau_marker" size="0.200000 0.200000" />
+    <ImageTarget name="UniQR" size="0.150000 0.150000" />
     <ImageTarget name="marker1" size="0.220000 0.179400" />
   </Tracking>
 </QCARConfig>
