@@ -18,11 +18,14 @@ public class UIManager : MonoBehaviour {
     public bool ScreenLocked;
     public bool TrackingLost = true;
 
-	// Use this for initialization
-	void Awake () {
+    public GameObject InstructionObject1, InstructionObject2, InstructionObject3;
+    private GameObject[] InstructionObjects;
+
+    // Use this for initialization
+    void Awake () {
 
         Instructions = new GameObject[] { Instruction1, Instruction2, Instruction3 };
-        
+        InstructionObjects = new GameObject[] { InstructionObject1, InstructionObject2, InstructionObject3 };
         
 
         LockScreenUI.SetActive(false);
@@ -44,7 +47,13 @@ public class UIManager : MonoBehaviour {
             instruction.SetActive(false);
         }
 
+        foreach (GameObject instruction in InstructionObjects)
+        {
+            instruction.SetActive(false);
+        }
+
         Instructions[InstructionCounter].SetActive(true);
+        InstructionObjects[InstructionCounter].SetActive(true);
 
     }
 
@@ -89,8 +98,10 @@ public class UIManager : MonoBehaviour {
         else
         {
             Instructions[InstructionCounter].SetActive(false);
+            InstructionObjects[InstructionCounter].SetActive(false);
             InstructionCounter++;
             Instructions[InstructionCounter].SetActive(true);
+            InstructionObjects[InstructionCounter].SetActive(true);
         }
     }
 
@@ -103,8 +114,10 @@ public class UIManager : MonoBehaviour {
         else
         {
             Instructions[InstructionCounter].SetActive(false);
+            InstructionObjects[InstructionCounter].SetActive(false);
             InstructionCounter--;
             Instructions[InstructionCounter].SetActive(true);
+            InstructionObjects[InstructionCounter].SetActive(true);
         }
     }
 
