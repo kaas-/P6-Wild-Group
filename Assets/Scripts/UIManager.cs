@@ -125,6 +125,7 @@ public class UIManager : MonoBehaviour {
     {
         InstructionUI.SetActive(false);
         DefaultUI.SetActive(true);
+        InstructionCounter = 0;
     }
 
     public void OnScreenUnlockButton()
