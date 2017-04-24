@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour {
     public GameObject DefaultUI;
     public GameObject LockScreenUI;
     public GameObject InstructionUI;
+    public GameObject StartUI;
 
     public GameObject Instruction1, Instruction2, Instruction3;
     private GameObject[] Instructions;
@@ -21,6 +22,12 @@ public class UIManager : MonoBehaviour {
     public GameObject InstructionObject1, InstructionObject2, InstructionObject3;
     private GameObject[] InstructionObjects;
 
+    public GameObject InstructionsForwardButton;
+    public GameObject InstructionsBackButton;
+    public GameObject InstructionsDoneButton;
+
+    private bool isStarted = false;
+
     // Use this for initialization
     void Awake () {
 
@@ -29,7 +36,7 @@ public class UIManager : MonoBehaviour {
 
         LockScreenUI.SetActive(false);
         InstructionUI.SetActive(false);
-        
+        DefaultUI.SetActive(false);
 	}
 
     public void OnInstructionScreen()
@@ -53,6 +60,17 @@ public class UIManager : MonoBehaviour {
         Instructions[InstructionCounter].SetActive(true);
         InstructionObjects[InstructionCounter].SetActive(true);
 
+        InstructionsForwardButton.SetActive(true);
+        InstructionsBackButton.SetActive(false);
+        InstructionsDoneButton.SetActive(false);
+
+    }
+
+    public void OnStartButton()
+    {
+        isStarted = true;
+        StartUI.SetActive(false);
+        DefaultUI.SetActive(true);
     }
 
     //based on http://answers.unity3d.com/questions/9969/convert-a-rendertexture-to-a-texture2d.html
@@ -89,33 +107,47 @@ public class UIManager : MonoBehaviour {
     public void OnForwardButton()
     {
 
-        if (InstructionCounter >= Instructions.Length - 1)
+        if (InstructionCounter != Instructions.Length - 1)
         {
-            InstructionCounter = Instructions.Length - 1;
-        }
-        else
-        {
+            if(InstructionCounter == 0)
+            {
+                InstructionsBackButton.SetActive(true);
+            }
+
             Instructions[InstructionCounter].SetActive(false);
             InstructionObjects[InstructionCounter].SetActive(false);
             InstructionCounter++;
             Instructions[InstructionCounter].SetActive(true);
             InstructionObjects[InstructionCounter].SetActive(true);
         }
+
+        if (InstructionCounter == Instructions.Length - 1)
+        {
+            InstructionCounter = Instructions.Length - 1;
+            InstructionsForwardButton.SetActive(false);
+            InstructionsDoneButton.SetActive(true);
+        }
     }
 
     public void OnBackButton()
     {
-        if (InstructionCounter <= 0)
+        if (InstructionCounter != 0)
         {
-            InstructionCounter = 0;
-        }
-        else
-        {
+            if(InstructionCounter == Instructions.Length-1)
+            {
+                InstructionsForwardButton.SetActive(true);
+                InstructionsDoneButton.SetActive(false);
+            }
+
             Instructions[InstructionCounter].SetActive(false);
             InstructionObjects[InstructionCounter].SetActive(false);
             InstructionCounter--;
             Instructions[InstructionCounter].SetActive(true);
             InstructionObjects[InstructionCounter].SetActive(true);
+        }
+        if (InstructionCounter == 0)
+        {
+            InstructionsBackButton.SetActive(false);
         }
     }
 
@@ -133,10 +165,18 @@ public class UIManager : MonoBehaviour {
         InstructionUI.SetActive(true);
     }
 
+    public void OnDoneButton()
+    {
+        isStarted = false;
+        InstructionCounter = 0;
+        InstructionUI.SetActive(false);
+        StartUI.SetActive(true);
+    }
+
     void Update()
     {
 
-        if(!TrackingLost && !ScreenLocked && !InstructionUI.activeInHierarchy)
+        if(!TrackingLost && !ScreenLocked && !InstructionUI.activeInHierarchy && isStarted)
         {
             OnInstructionScreen();
         }

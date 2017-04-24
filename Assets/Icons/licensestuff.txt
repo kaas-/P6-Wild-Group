@@ -1,0 +1,11 @@
+left-arrow: 
+https://www.iconfinder.com/icons/186410/arrow_left_previous_icon#size=128
+
+right-arrow:
+https://www.iconfinder.com/icons/186409/arrow_next_right_icon#size=128
+
+icon:
+https://www.iconfinder.com/icons/115716/lock_password_secure_security_unlock_icon#size=128
+
+camera:
+https://www.iconfinder.com/icons/126587/camera_icon#size=128
