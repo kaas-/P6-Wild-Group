@@ -26,12 +26,10 @@ public class UIManager : MonoBehaviour {
 
         Instructions = new GameObject[] { Instruction1, Instruction2, Instruction3 };
         InstructionObjects = new GameObject[] { InstructionObject1, InstructionObject2, InstructionObject3 };
-        
 
         LockScreenUI.SetActive(false);
         InstructionUI.SetActive(false);
-
-
+        
 	}
 
     public void OnInstructionScreen()
