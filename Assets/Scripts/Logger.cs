@@ -6,13 +6,12 @@ using System;
 
 public class Logger : MonoBehaviour {
 
-    private string filename;
-    private string path;
+    private static string filename;
+    private static string path = Application.persistentDataPath;
 
-    void StartLog ()
+    public static void StartLog (string UserName, string TestType)
     {
-
-        path = Application.persistentDataPath;
+        Debug.Log("user_" + UserName + "_" + TestType);
     }
 
 }

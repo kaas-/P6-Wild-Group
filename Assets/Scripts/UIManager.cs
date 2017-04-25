@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour {
 
@@ -26,6 +27,9 @@ public class UIManager : MonoBehaviour {
     public GameObject InstructionsBackButton;
     public GameObject InstructionsDoneButton;
 
+    public GameObject DefineUserUI;
+    public TextMeshProUGUI DefineUserInputField; 
+
     private bool isStarted = false;
 
     // Use this for initialization
@@ -37,6 +41,8 @@ public class UIManager : MonoBehaviour {
         LockScreenUI.SetActive(false);
         InstructionUI.SetActive(false);
         DefaultUI.SetActive(false);
+        StartUI.SetActive(false);
+
 	}
 
     public void OnInstructionScreen()
@@ -170,6 +176,20 @@ public class UIManager : MonoBehaviour {
         isStarted = false;
         InstructionCounter = 0;
         InstructionUI.SetActive(false);
+        StartUI.SetActive(true);
+    }
+
+    public void OnWithAppButton()
+    {
+        Logger.StartLog(DefineUserInputField.text, "with_app");
+        DefineUserUI.SetActive(false);
+        StartUI.SetActive(true);
+    }
+
+    public void OnWithoutAppButton()
+    {
+        Logger.StartLog(DefineUserInputField.text, "without_app");
+        DefineUserUI.SetActive(false);
         StartUI.SetActive(true);
     }
 
