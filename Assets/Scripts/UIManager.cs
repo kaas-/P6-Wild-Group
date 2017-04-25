@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour {
 
     public void OnInstructionScreen()
     {
+        Logger.EventLog("Marker found");
         DefaultUI.SetActive(false);
         
         InstructionUI.SetActive(true);
@@ -75,6 +76,9 @@ public class UIManager : MonoBehaviour {
     public void OnStartButton()
     {
         isStarted = true;
+
+        Logger.StartLog();
+
         StartUI.SetActive(false);
         DefaultUI.SetActive(true);
     }
@@ -82,6 +86,8 @@ public class UIManager : MonoBehaviour {
     //based on http://answers.unity3d.com/questions/9969/convert-a-rendertexture-to-a-texture2d.html
     public void LockScreenButton()
     {
+        Logger.EventLog("Screen Locked");
+
         InstructionUI.SetActive(false);
         LockScreenUI.SetActive(true);
 
@@ -112,6 +118,7 @@ public class UIManager : MonoBehaviour {
 
     public void OnForwardButton()
     {
+        Logger.EventLog("Forward Instruction");
 
         if (InstructionCounter != Instructions.Length - 1)
         {
@@ -137,6 +144,8 @@ public class UIManager : MonoBehaviour {
 
     public void OnBackButton()
     {
+        Logger.EventLog("Back Instruction");
+
         if (InstructionCounter != 0)
         {
             if(InstructionCounter == Instructions.Length-1)
@@ -159,6 +168,7 @@ public class UIManager : MonoBehaviour {
 
     public void OnReturnButton()
     {
+        Logger.EventLog("Returned to scan screen");
         InstructionUI.SetActive(false);
         DefaultUI.SetActive(true);
         InstructionCounter = 0;
@@ -166,6 +176,7 @@ public class UIManager : MonoBehaviour {
 
     public void OnScreenUnlockButton()
     {
+        Logger.EventLog("Screen Unlocked");
         ScreenLocked = false;
         LockScreenUI.SetActive(false);
         InstructionUI.SetActive(true);
@@ -175,20 +186,22 @@ public class UIManager : MonoBehaviour {
     {
         isStarted = false;
         InstructionCounter = 0;
+        Logger.FinishLog();
+
         InstructionUI.SetActive(false);
         StartUI.SetActive(true);
     }
 
     public void OnWithAppButton()
     {
-        Logger.StartLog(DefineUserInputField.text, "with_app");
+        Logger.InitLog(DefineUserInputField.text, "with_app");
         DefineUserUI.SetActive(false);
         StartUI.SetActive(true);
     }
 
     public void OnWithoutAppButton()
     {
-        Logger.StartLog(DefineUserInputField.text, "without_app");
+        Logger.InitLog(DefineUserInputField.text, "without_app");
         DefineUserUI.SetActive(false);
         StartUI.SetActive(true);
     }
