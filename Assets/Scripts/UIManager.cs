@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour {
 
@@ -26,6 +27,9 @@ public class UIManager : MonoBehaviour {
     public GameObject InstructionsBackButton;
     public GameObject InstructionsDoneButton;
 
+    public GameObject DefineUserUI;
+    public TextMeshProUGUI DefineUserInputField; 
+
     private bool isStarted = false;
 
     // Use this for initialization
@@ -37,10 +41,13 @@ public class UIManager : MonoBehaviour {
         LockScreenUI.SetActive(false);
         InstructionUI.SetActive(false);
         DefaultUI.SetActive(false);
+        StartUI.SetActive(false);
+
 	}
 
     public void OnInstructionScreen()
     {
+        Logger.EventLog("Marker found");
         DefaultUI.SetActive(false);
         
         InstructionUI.SetActive(true);
@@ -69,6 +76,9 @@ public class UIManager : MonoBehaviour {
     public void OnStartButton()
     {
         isStarted = true;
+
+        Logger.StartLog();
+
         StartUI.SetActive(false);
         DefaultUI.SetActive(true);
     }
@@ -76,6 +86,8 @@ public class UIManager : MonoBehaviour {
     //based on http://answers.unity3d.com/questions/9969/convert-a-rendertexture-to-a-texture2d.html
     public void LockScreenButton()
     {
+        Logger.EventLog("Screen Locked");
+
         InstructionUI.SetActive(false);
         LockScreenUI.SetActive(true);
 
@@ -106,6 +118,7 @@ public class UIManager : MonoBehaviour {
 
     public void OnForwardButton()
     {
+        Logger.EventLog("Forward Instruction");
 
         if (InstructionCounter != Instructions.Length - 1)
         {
@@ -131,6 +144,8 @@ public class UIManager : MonoBehaviour {
 
     public void OnBackButton()
     {
+        Logger.EventLog("Back Instruction");
+
         if (InstructionCounter != 0)
         {
             if(InstructionCounter == Instructions.Length-1)
@@ -153,6 +168,7 @@ public class UIManager : MonoBehaviour {
 
     public void OnReturnButton()
     {
+        Logger.EventLog("Returned to scan screen");
         InstructionUI.SetActive(false);
         DefaultUI.SetActive(true);
         InstructionCounter = 0;
@@ -160,6 +176,7 @@ public class UIManager : MonoBehaviour {
 
     public void OnScreenUnlockButton()
     {
+        Logger.EventLog("Screen Unlocked");
         ScreenLocked = false;
         LockScreenUI.SetActive(false);
         InstructionUI.SetActive(true);
@@ -169,7 +186,23 @@ public class UIManager : MonoBehaviour {
     {
         isStarted = false;
         InstructionCounter = 0;
+        Logger.FinishLog();
+
         InstructionUI.SetActive(false);
+        StartUI.SetActive(true);
+    }
+
+    public void OnWithAppButton()
+    {
+        Logger.InitLog(DefineUserInputField.text, "with_app");
+        DefineUserUI.SetActive(false);
+        StartUI.SetActive(true);
+    }
+
+    public void OnWithoutAppButton()
+    {
+        Logger.InitLog(DefineUserInputField.text, "without_app");
+        DefineUserUI.SetActive(false);
         StartUI.SetActive(true);
     }
 
