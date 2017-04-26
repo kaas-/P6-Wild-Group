@@ -11,8 +11,9 @@ public class UIManager : MonoBehaviour {
     public GameObject InstructionUI;
     public GameObject StartUI;
 
-    public GameObject Instruction1, Instruction2, Instruction3;
-    private GameObject[] Instructions;
+    public GameObject InstructionA1, InstructionA2, InstructionA3;
+    public GameObject InstructionB1, InstructionB2, InstructionB3;
+    private GameObject[] InstructionsA, InstructionsB;
 
     public Camera lockScreenCamera;
 
@@ -20,8 +21,9 @@ public class UIManager : MonoBehaviour {
     public bool ScreenLocked;
     public bool TrackingLost = true;
 
-    public GameObject InstructionObject1, InstructionObject2, InstructionObject3;
-    private GameObject[] InstructionObjects;
+    public GameObject InstructionObjectA1, InstructionObjectA2, InstructionObjectA3;
+    public GameObject InstructionObjectB1, InstructionObjectB2, InstructionObjectB3;
+    private GameObject[] InstructionObjectsA, InstructionObjectsB;
 
     public GameObject InstructionsForwardButton;
     public GameObject InstructionsBackButton;
@@ -32,11 +34,18 @@ public class UIManager : MonoBehaviour {
 
     private bool isStarted = false;
 
+    public static string ImageTarget;
+
+    private bool testWithApp;
+
     // Use this for initialization
     void Awake () {
 
-        Instructions = new GameObject[] { Instruction1, Instruction2, Instruction3 };
-        InstructionObjects = new GameObject[] { InstructionObject1, InstructionObject2, InstructionObject3 };
+        InstructionsA = new GameObject[] { InstructionA1, InstructionA2, InstructionA3 };
+        InstructionObjectsA = new GameObject[] { InstructionObjectA1, InstructionObjectA2, InstructionObjectA3 };
+
+        InstructionsB = new GameObject[] { InstructionB1, InstructionB2, InstructionB3 };
+        InstructionObjectsB = new GameObject[] { InstructionObjectB1, InstructionObjectB2, InstructionObjectB3 };
 
         LockScreenUI.SetActive(false);
         InstructionUI.SetActive(false);
@@ -47,25 +56,45 @@ public class UIManager : MonoBehaviour {
 
     public void OnInstructionScreen()
     {
-        Logger.EventLog("Marker found");
+        Logger.EventLog("Marker " + ImageTarget + " found");
         DefaultUI.SetActive(false);
         
         InstructionUI.SetActive(true);
 
         InstructionCounter = 0;
 
-        foreach (GameObject instruction in Instructions)
+        foreach (GameObject instruction in InstructionsA)
         {
             instruction.SetActive(false);
         }
 
-        foreach (GameObject instruction in InstructionObjects)
+        foreach (GameObject instruction in InstructionObjectsA)
         {
             instruction.SetActive(false);
         }
 
-        Instructions[InstructionCounter].SetActive(true);
-        InstructionObjects[InstructionCounter].SetActive(true);
+        foreach (GameObject instruction in InstructionsB)
+        {
+            instruction.SetActive(false);
+        }
+
+        foreach (GameObject instruction in InstructionObjectsB)
+        {
+            instruction.SetActive(false);
+        }
+
+        if (ImageTarget == "blue_aau")
+        {
+            InstructionsA[InstructionCounter].SetActive(true);
+            InstructionObjectsA[InstructionCounter].SetActive(true);
+        }
+
+        if (ImageTarget == "red_aau")
+        {
+            InstructionsB[InstructionCounter].SetActive(true);
+            InstructionObjectsB[InstructionCounter].SetActive(true);
+        }
+
 
         InstructionsForwardButton.SetActive(true);
         InstructionsBackButton.SetActive(false);
@@ -78,9 +107,38 @@ public class UIManager : MonoBehaviour {
         isStarted = true;
 
         Logger.StartLog();
-
         StartUI.SetActive(false);
-        DefaultUI.SetActive(true);
+
+        if (testWithApp)
+        {
+            DefaultUI.SetActive(true);
+        }
+        else
+        {
+            InstructionUI.SetActive(true);
+
+            foreach (GameObject instruction in InstructionsA)
+            {
+                instruction.SetActive(false);
+            }
+
+            foreach (GameObject instruction in InstructionObjectsA)
+            {
+                instruction.SetActive(false);
+            }
+
+            foreach (GameObject instruction in InstructionsB)
+            {
+                instruction.SetActive(false);
+            }
+
+            foreach (GameObject instruction in InstructionObjectsB)
+            {
+                instruction.SetActive(false);
+            }
+
+            InstructionsDoneButton.SetActive(true);
+        }
     }
 
     //based on http://answers.unity3d.com/questions/9969/convert-a-rendertexture-to-a-texture2d.html
@@ -120,23 +178,38 @@ public class UIManager : MonoBehaviour {
     {
         Logger.EventLog("Forward Instruction");
 
-        if (InstructionCounter != Instructions.Length - 1)
+        if (InstructionCounter != 2)
         {
             if(InstructionCounter == 0)
             {
                 InstructionsBackButton.SetActive(true);
             }
 
-            Instructions[InstructionCounter].SetActive(false);
-            InstructionObjects[InstructionCounter].SetActive(false);
-            InstructionCounter++;
-            Instructions[InstructionCounter].SetActive(true);
-            InstructionObjects[InstructionCounter].SetActive(true);
+            
+
+            if (ImageTarget == "blue_aau")
+            {
+                InstructionsA[InstructionCounter].SetActive(false);
+                InstructionObjectsA[InstructionCounter].SetActive(false);
+                InstructionCounter++;
+                InstructionsA[InstructionCounter].SetActive(true);
+                InstructionObjectsA[InstructionCounter].SetActive(true);
+            }
+
+            if (ImageTarget == "red_aau")
+            {
+                InstructionsB[InstructionCounter].SetActive(false);
+                InstructionObjectsB[InstructionCounter].SetActive(false);
+                InstructionCounter++;
+                InstructionsB[InstructionCounter].SetActive(true);
+                InstructionObjectsB[InstructionCounter].SetActive(true);
+
+            }
         }
 
-        if (InstructionCounter == Instructions.Length - 1)
+        if (InstructionCounter == 2)
         {
-            InstructionCounter = Instructions.Length - 1;
+            
             InstructionsForwardButton.SetActive(false);
             InstructionsDoneButton.SetActive(true);
         }
@@ -148,17 +221,30 @@ public class UIManager : MonoBehaviour {
 
         if (InstructionCounter != 0)
         {
-            if(InstructionCounter == Instructions.Length-1)
+            if(InstructionCounter == 2)
             {
                 InstructionsForwardButton.SetActive(true);
                 InstructionsDoneButton.SetActive(false);
             }
 
-            Instructions[InstructionCounter].SetActive(false);
-            InstructionObjects[InstructionCounter].SetActive(false);
-            InstructionCounter--;
-            Instructions[InstructionCounter].SetActive(true);
-            InstructionObjects[InstructionCounter].SetActive(true);
+            if (ImageTarget == "blue_aau")
+            {
+                InstructionsA[InstructionCounter].SetActive(false);
+                InstructionObjectsA[InstructionCounter].SetActive(false);
+                InstructionCounter--;
+                InstructionsA[InstructionCounter].SetActive(true);
+                InstructionObjectsA[InstructionCounter].SetActive(true);
+            }
+
+            if (ImageTarget == "red_aau")
+            {
+                InstructionsB[InstructionCounter].SetActive(false);
+                InstructionObjectsB[InstructionCounter].SetActive(false);
+                InstructionCounter--;
+                InstructionsB[InstructionCounter].SetActive(true);
+                InstructionObjectsB[InstructionCounter].SetActive(true);
+            }
+
         }
         if (InstructionCounter == 0)
         {
@@ -194,6 +280,7 @@ public class UIManager : MonoBehaviour {
 
     public void OnWithAppButton()
     {
+        testWithApp = true;
         Logger.InitLog(DefineUserInputField.text, "with_app");
         DefineUserUI.SetActive(false);
         StartUI.SetActive(true);
@@ -201,6 +288,7 @@ public class UIManager : MonoBehaviour {
 
     public void OnWithoutAppButton()
     {
+        testWithApp = false;
         Logger.InitLog(DefineUserInputField.text, "without_app");
         DefineUserUI.SetActive(false);
         StartUI.SetActive(true);
