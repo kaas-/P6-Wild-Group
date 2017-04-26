@@ -42,6 +42,11 @@ public class MyTrackableEventHandler : MonoBehaviour, ITrackableEventHandler{
 
     private void OnTrackingFound()
     {
+        if (UIManager.ImageTarget != mTrackableBehaviour.TrackableName)
+        {
+            UIManager.ImageTarget = mTrackableBehaviour.TrackableName;
+        }
+
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 
@@ -65,6 +70,7 @@ public class MyTrackableEventHandler : MonoBehaviour, ITrackableEventHandler{
 
     private void OnTrackingLost()
     {
+
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 
