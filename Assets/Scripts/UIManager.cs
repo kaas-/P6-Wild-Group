@@ -278,6 +278,26 @@ public class UIManager : MonoBehaviour {
         InstructionUI.SetActive(false);
         DefaultUI.SetActive(true);
         InstructionCounter = 0;
+
+        foreach (GameObject instruction in InstructionsA)
+        {
+            instruction.SetActive(false);
+        }
+
+        foreach (GameObject instruction in InstructionObjectsA)
+        {
+            instruction.SetActive(false);
+        }
+
+        foreach (GameObject instruction in InstructionsB)
+        {
+            instruction.SetActive(false);
+        }
+
+        foreach (GameObject instruction in InstructionObjectsB)
+        {
+            instruction.SetActive(false);
+        }
     }
 
     public void OnScreenUnlockButton()
