@@ -791,6 +791,36 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114633787385491454, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: InstructionObjectA1
+      value: 
+      objectReference: {fileID: 1922897069}
+    - target: {fileID: 114633787385491454, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: InstructionObjectA2
+      value: 
+      objectReference: {fileID: 1811230788}
+    - target: {fileID: 114633787385491454, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: InstructionObjectA3
+      value: 
+      objectReference: {fileID: 2131726550}
+    - target: {fileID: 114633787385491454, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: InstructionObjectB1
+      value: 
+      objectReference: {fileID: 1922897069}
+    - target: {fileID: 114633787385491454, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: InstructionObjectB2
+      value: 
+      objectReference: {fileID: 1811230788}
+    - target: {fileID: 114633787385491454, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: InstructionObjectB3
+      value: 
+      objectReference: {fileID: 2131726550}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ceaadcfeec7b35e40b405eb9c25e76c6, type: 2}
   m_IsPrefabParent: 0
