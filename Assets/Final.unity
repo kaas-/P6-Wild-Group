@@ -1409,9 +1409,8 @@ Prefab:
     - target: {fileID: 114500610914752972, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
         type: 2}
       propertyPath: m_text
-      value: 'Check if the shown crane module is in its appointed socket.
-
-        If not, find it and place it in the socket.'
+      value: Check if the shown crane module is in its appointed socket. If not, find
+        it and place it in the socket.
       objectReference: {fileID: 0}
     - target: {fileID: 114500610914752972, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
         type: 2}
@@ -1431,24 +1430,23 @@ Prefab:
     - target: {fileID: 114500610914752972, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
         type: 2}
       propertyPath: m_textInfo.lineCount
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114500610914752972, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
         type: 2}
       propertyPath: m_firstOverflowCharacterIndex
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 114340625988645770, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
         type: 2}
       propertyPath: m_text
-      value: 'Check if the shown crane module is in its appointed socket.
-
-        If not, find it and place it in the socket.'
+      value: Check if the shown crane module is in its appointed socket. If not, find
+        it and place it in the socket.
       objectReference: {fileID: 0}
     - target: {fileID: 114340625988645770, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
         type: 2}
       propertyPath: m_firstOverflowCharacterIndex
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 114340625988645770, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
         type: 2}
@@ -1468,19 +1466,18 @@ Prefab:
     - target: {fileID: 114340625988645770, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
         type: 2}
       propertyPath: m_textInfo.lineCount
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114553047836666882, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
         type: 2}
       propertyPath: m_text
-      value: 'Check if the shown crane module is in its appointed socket.
-
-        If not, find it and place it in the socket.'
+      value: Check if the shown crane module is in its appointed socket. If not, find
+        it and place it in the socket.
       objectReference: {fileID: 0}
     - target: {fileID: 114553047836666882, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
         type: 2}
       propertyPath: m_firstOverflowCharacterIndex
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 114553047836666882, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
         type: 2}
@@ -1500,7 +1497,7 @@ Prefab:
     - target: {fileID: 114553047836666882, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
         type: 2}
       propertyPath: m_textInfo.lineCount
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ceaadcfeec7b35e40b405eb9c25e76c6, type: 2}
