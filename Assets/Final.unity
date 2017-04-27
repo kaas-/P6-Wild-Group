@@ -1390,6 +1390,114 @@ Prefab:
       propertyPath: m_firstOverflowCharacterIndex
       value: 133
       objectReference: {fileID: 0}
+    - target: {fileID: 1062016571041724, guid: ceaadcfeec7b35e40b405eb9c25e76c6, type: 2}
+      propertyPath: m_Name
+      value: InstructionB_leftModule
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174255728281252, guid: ceaadcfeec7b35e40b405eb9c25e76c6, type: 2}
+      propertyPath: m_Name
+      value: InstructionB_middleModule
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018998506766776, guid: ceaadcfeec7b35e40b405eb9c25e76c6, type: 2}
+      propertyPath: m_Name
+      value: InstructionB_rightModule
+      objectReference: {fileID: 0}
+    - target: {fileID: 114500610914752972, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_text
+      value: 'Check if the shown crane module is in its appointed socket.
+
+        If not, find it and place it in the socket.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114500610914752972, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 103
+      objectReference: {fileID: 0}
+    - target: {fileID: 114500610914752972, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114500610914752972, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114500610914752972, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114500610914752972, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114340625988645770, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_text
+      value: 'Check if the shown crane module is in its appointed socket.
+
+        If not, find it and place it in the socket.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114340625988645770, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114340625988645770, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 103
+      objectReference: {fileID: 0}
+    - target: {fileID: 114340625988645770, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114340625988645770, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114340625988645770, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114553047836666882, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_text
+      value: 'Check if the shown crane module is in its appointed socket.
+
+        If not, find it and place it in the socket.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114553047836666882, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114553047836666882, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 103
+      objectReference: {fileID: 0}
+    - target: {fileID: 114553047836666882, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114553047836666882, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114553047836666882, guid: ceaadcfeec7b35e40b405eb9c25e76c6,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ceaadcfeec7b35e40b405eb9c25e76c6, type: 2}
   m_IsPrefabParent: 0
