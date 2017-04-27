@@ -52,7 +52,27 @@ public class UIManager : MonoBehaviour {
         DefaultUI.SetActive(false);
         StartUI.SetActive(false);
 
-	}
+        foreach (GameObject instruction in InstructionsA)
+        {
+            instruction.SetActive(false);
+        }
+
+        foreach (GameObject instruction in InstructionObjectsA)
+        {
+            instruction.SetActive(false);
+        }
+
+        foreach (GameObject instruction in InstructionsB)
+        {
+            instruction.SetActive(false);
+        }
+
+        foreach (GameObject instruction in InstructionObjectsB)
+        {
+            instruction.SetActive(false);
+        }
+
+    }
 
     public void OnInstructionScreen()
     {
