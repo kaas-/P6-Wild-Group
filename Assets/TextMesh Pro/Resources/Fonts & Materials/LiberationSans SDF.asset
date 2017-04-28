@@ -120,7 +120,7 @@ Material:
       second: 0
     - first:
         name: _OutlineWidth
-      second: 0.05
+      second: 0.2
     - first:
         name: _PerspectiveFilter
       second: 0.875

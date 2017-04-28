@@ -32,7 +32,8 @@ public class UIManager : MonoBehaviour {
     public GameObject UnlockScreenButton;
     public GameObject TextButtonOn;
     public GameObject TextButtonOff;
-    public GameObject Instruction_Crane;
+    public GameObject InstructionBArrow1, InstructionBArrow2, InstructionBArrow3;
+    public GameObject[] InstructionBArrows;
 
     public GameObject DefineUserUI;
     public TextMeshProUGUI DefineUserInputField; 
@@ -51,6 +52,8 @@ public class UIManager : MonoBehaviour {
 
         InstructionsB = new GameObject[] { InstructionB1, InstructionB2, InstructionB3 };
         InstructionObjectsB = new GameObject[] { InstructionObjectB1, InstructionObjectB2, InstructionObjectB3 };
+
+        InstructionBArrows = new GameObject[] { InstructionBArrow1, InstructionBArrow2, InstructionBArrow3 };
 
         LockScreenUI.SetActive(false);
         InstructionUI.SetActive(false);
@@ -108,6 +111,10 @@ public class UIManager : MonoBehaviour {
         {
             instruction.SetActive(false);
         }
+        foreach (GameObject arrow in InstructionBArrows)
+        {
+            arrow.SetActive(false);
+        }
 
         if (ImageTarget == "blue_aau")
         {
@@ -119,7 +126,7 @@ public class UIManager : MonoBehaviour {
         {
             InstructionsB[InstructionCounter].SetActive(true);
             InstructionObjectsB[InstructionCounter].SetActive(true);
-            Instruction_Crane.SetActive(true);
+            InstructionBArrows[InstructionCounter].SetActive(true);
         }
 
 
@@ -163,7 +170,10 @@ public class UIManager : MonoBehaviour {
             {
                 instruction.SetActive(false);
             }
-
+            foreach (GameObject arrow in InstructionBArrows)
+            {
+                arrow.SetActive(false);
+            }
             InstructionsDoneButton.SetActive(true);
         }
     }
@@ -231,9 +241,11 @@ public class UIManager : MonoBehaviour {
             {
                 InstructionsB[InstructionCounter].SetActive(false);
                 InstructionObjectsB[InstructionCounter].SetActive(false);
+                InstructionBArrows[InstructionCounter].SetActive(false);
                 InstructionCounter++;
                 InstructionsB[InstructionCounter].SetActive(true);
                 InstructionObjectsB[InstructionCounter].SetActive(true);
+                InstructionBArrows[InstructionCounter].SetActive(true);
 
             }
         }
@@ -271,9 +283,12 @@ public class UIManager : MonoBehaviour {
             {
                 InstructionsB[InstructionCounter].SetActive(false);
                 InstructionObjectsB[InstructionCounter].SetActive(false);
+                InstructionBArrows[InstructionCounter].SetActive(false);
                 InstructionCounter--;
                 InstructionsB[InstructionCounter].SetActive(true);
                 InstructionObjectsB[InstructionCounter].SetActive(true);
+                InstructionBArrows[InstructionCounter].SetActive(true);
+
             }
 
         }
@@ -290,8 +305,6 @@ public class UIManager : MonoBehaviour {
         LockScreenUI.SetActive(false);
         DefaultUI.SetActive(true);
         InstructionCounter = 0;
-
-        Instruction_Crane.SetActive(false);
 
         foreach (GameObject instruction in InstructionsA)
         {
@@ -311,6 +324,11 @@ public class UIManager : MonoBehaviour {
         foreach (GameObject instruction in InstructionObjectsB)
         {
             instruction.SetActive(false);
+        }
+
+        foreach (GameObject arrow in InstructionBArrows)
+        {
+            arrow.SetActive(false);
         }
 
         ScreenLocked = false;
