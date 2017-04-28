@@ -28,6 +28,10 @@ public class UIManager : MonoBehaviour {
     public GameObject InstructionsForwardButton;
     public GameObject InstructionsBackButton;
     public GameObject InstructionsDoneButton;
+    public GameObject LockScreenButton;
+    public GameObject UnlockScreenButton;
+    public GameObject TextButtonOn;
+    public GameObject TextButtonOff;
 
     public GameObject DefineUserUI;
     public TextMeshProUGUI DefineUserInputField; 
@@ -80,6 +84,7 @@ public class UIManager : MonoBehaviour {
         DefaultUI.SetActive(false);
         
         InstructionUI.SetActive(true);
+        TextButtonOff.SetActive(false);
 
         InstructionCounter = 0;
 
@@ -162,11 +167,15 @@ public class UIManager : MonoBehaviour {
     }
 
     //based on http://answers.unity3d.com/questions/9969/convert-a-rendertexture-to-a-texture2d.html
-    public void LockScreenButton()
+    public void OnLockScreenButton()
     {
         Logger.EventLog("Screen Locked");
 
-        InstructionUI.SetActive(false);
+        InstructionsForwardButton.SetActive(false);
+        InstructionsBackButton.SetActive(false);
+        InstructionsDoneButton.SetActive(false);
+        LockScreenButton.SetActive(false);
+
         LockScreenUI.SetActive(true);
 
         lockScreenCamera.GetComponent<LockScreenCamera>().UpdateCamera();
@@ -276,6 +285,7 @@ public class UIManager : MonoBehaviour {
     {
         Logger.EventLog("Returned to scan screen");
         InstructionUI.SetActive(false);
+        LockScreenUI.SetActive(false);
         DefaultUI.SetActive(true);
         InstructionCounter = 0;
 
@@ -298,6 +308,8 @@ public class UIManager : MonoBehaviour {
         {
             instruction.SetActive(false);
         }
+
+        ScreenLocked = false;
     }
 
     public void OnScreenUnlockButton()
@@ -305,7 +317,13 @@ public class UIManager : MonoBehaviour {
         Logger.EventLog("Screen Unlocked");
         ScreenLocked = false;
         LockScreenUI.SetActive(false);
-        InstructionUI.SetActive(true);
+        InstructionsForwardButton.SetActive(true);
+        InstructionsBackButton.SetActive(true);
+
+        if(InstructionCounter == 2)
+            InstructionsDoneButton.SetActive(false);
+
+        LockScreenButton.SetActive(true);
     }
 
     public void OnDoneButton()
@@ -332,6 +350,21 @@ public class UIManager : MonoBehaviour {
         Logger.InitLog(DefineUserInputField.text, "without_app");
         DefineUserUI.SetActive(false);
         StartUI.SetActive(true);
+    }
+    
+    public void OnToggleText()
+    {
+        TextButtonOn.SetActive(!TextButtonOn.activeSelf);
+        TextButtonOff.SetActive(!TextButtonOff.activeSelf);
+
+        if (ImageTarget == "blue_aau")
+        {
+            InstructionsA[InstructionCounter].SetActive(!InstructionsA[InstructionCounter].activeSelf);
+        }
+        if (ImageTarget == "red_aau")
+        {
+            InstructionsB[InstructionCounter].SetActive(!InstructionsB[InstructionCounter].activeSelf);
+        }
     }
 
     void Update()
