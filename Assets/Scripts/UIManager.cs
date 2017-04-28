@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour {
     public GameObject UnlockScreenButton;
     public GameObject TextButtonOn;
     public GameObject TextButtonOff;
+    public GameObject Instruction_Crane;
 
     public GameObject DefineUserUI;
     public TextMeshProUGUI DefineUserInputField; 
@@ -118,6 +119,7 @@ public class UIManager : MonoBehaviour {
         {
             InstructionsB[InstructionCounter].SetActive(true);
             InstructionObjectsB[InstructionCounter].SetActive(true);
+            Instruction_Crane.SetActive(true);
         }
 
 
@@ -288,6 +290,8 @@ public class UIManager : MonoBehaviour {
         LockScreenUI.SetActive(false);
         DefaultUI.SetActive(true);
         InstructionCounter = 0;
+
+        Instruction_Crane.SetActive(false);
 
         foreach (GameObject instruction in InstructionsA)
         {
